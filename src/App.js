@@ -26,8 +26,7 @@ class App extends React.Component {
     );
   }
 
-
-  render() {
+  renderContent(){
     //Conditional return
     if(this.state.errorMessage && !this.state.lat){
       return(
@@ -45,7 +44,18 @@ class App extends React.Component {
       )
     }
 
-    return <Loading/>
+    return <Loading message="Please allow the location request"/>
+  }
+
+
+  render() {
+    //Try not to have mutiple return statment inside render
+    //put multiple return statments in another function like renderContent()
+    return(
+      <div className="border red">
+        {this.renderContent()}
+      </div>
+    )
   }
 
 }
